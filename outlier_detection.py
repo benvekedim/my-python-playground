@@ -7,9 +7,9 @@ upper_range = np.mean(data) + 2 * np.std(data)
 
 # Aykırı değerleri bulalım
 outliers = []
-for value in data:
-    if value < lower_range or value > upper_range:
-        outliers.append(value)
+condition = ~((lower_range <= data) & (data<=upper_range))
+result = np.where(condition)[0][0]
+data[result]
 
 
 print("lower_range: ",lower_range)
