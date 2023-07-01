@@ -1,11 +1,30 @@
 import pandas as pd
+import names
+import random
 
-data = [
-    [1, "John", 32],
-    [2, "Jane", 28],
-    [3, "Bob", 45],
-    [4, "Alice", 27]
-]
+length = 50  #df.shape[0]
+
+def num_generate(num):
+    return num + 1
+
+ids = list(map(num_generate, range(length)))
+
+def generate_names(length ):
+    name_list = list(map(lambda x: names.get_first_name(), range(length )))
+    return name_list
+
+name_list = generate_names(length)
+
+def num_arr_generate(length):
+    arr = [random.randint(1, 80) for _ in range(length)]
+    return arr
+
+age_list = num_arr_generate(length)
+
+data = list(
+    map(list,zip(ids,name_list,age_list))
+)
+
 
 column_names = ["id", "name", "age"]
 
